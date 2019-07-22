@@ -2,7 +2,7 @@
 * @author Sidharth Mishra
 * @description 
 * @created 2019-07-21T16:14:12.109Z-07:00
-* @last-modified 2019-07-21T22:28:03.091Z-07:00
+* @last-modified 2019-07-21T21:17:18.470Z-07:00
 */
 
 #define SWAP(a,b) temp = a; a = b; b = temp
@@ -22,8 +22,7 @@
 //
 #define DEBUG(x) System.out.printf("[DEBUG] -- %s \n", x)
 #define PSVM public static void main(String[] args)
-#define PSVMEX public static void main(String[] args) throws Exception
-#define READER_BLOCK try(Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in))))
+#define READER_BEGIN try(Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in))))
 //
 //
 #define RI sc.nextInt()
@@ -40,15 +39,8 @@
 //
 #define SOUT(x) System.out.println(x)
 #define SOUTF(x,y) System.out.printf(x,y)
-#define FMT(x,y) String.format(x,y)
-#define WRITER_BLOCK try(BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out)))
-#define WRITE(x) out.write(x)
 //
 //
-#define SB StringBuilder sb = new StringBuilder()
-#define APP1(x) sb.append(x)
-#define APP2(x,y) sb.append(x).append(y)
-#define SBTOS sb.toString()
 //
 // import all java standard stuff
 import java.util.*;
@@ -57,3 +49,32 @@ import java.math.*;
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
+
+public class IncreasingArray {
+    PSVM {
+        READER_BEGIN {
+            int n = RI;
+            if (n == 1) {
+                SOUT(0);
+                return;
+            }
+            int[] a = new int[n];
+            FOR(i,0,n,1) {
+                a[i] = RI;
+            }
+            long count = 0;
+            FOR(i,0,n - 1,1) {
+                int p = a[i];
+                int q = a[i + 1];
+                if (p <= q) {
+                    continue;
+                } else {
+                    // DEBUG(i);
+                    count = (count + p - q);
+                    a[i+1]=a[i]; //update
+                }
+            }
+            SOUT(count);
+        }
+    }
+}

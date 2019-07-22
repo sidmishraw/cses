@@ -2,7 +2,7 @@
 * @author Sidharth Mishra
 * @description 
 * @created 2019-07-21T16:14:12.109Z-07:00
-* @last-modified 2019-07-21T22:28:03.091Z-07:00
+* @last-modified 2019-07-21T22:28:18.703Z-07:00
 */
 
 #define SWAP(a,b) temp = a; a = b; b = temp
@@ -57,3 +57,39 @@ import java.math.*;
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
+
+public class BeautifulPermutation {
+    PSVM throws Exception {
+        READER_BLOCK {
+            int n = RI;
+            if (n == 1) {
+                SOUT(1);
+                return;
+            }
+            if (n == 2 || n == 3) {
+                SOUT("NO SOLUTION");
+                return;
+            }
+            int oc = n % 2 != 0 ? (n+1)/2 : n/2;
+            int ec = n - oc;
+            SB;
+            WRITER_BLOCK {
+                int l = 2;
+                FOR(i,0,ec,1) {
+                    APP2(l," ");
+                    l += 2;
+                }
+                int k = 1;
+                FOR(i,ec,n,1) {
+                    if (i == n-1) {
+                        APP1(k);
+                    } else {
+                        APP2(k," ");
+                    }
+                    k += 2;
+                }
+                WRITE(SBTOS);
+            }
+        }
+    }
+}
