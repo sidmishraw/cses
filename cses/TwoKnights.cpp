@@ -1,8 +1,8 @@
 /**
 * @author Sidharth Mishra
-* @description C++->Java macro Template version 1.0.3
+* @description Two Knights C++->Java macro Template version 1.0.3
 * @created 2019-07-21T16:14:12.109Z-07:00
-* @last-modified 2019-07-28T14:03:00.244Z-07:00
+* @last-modified 2019-07-28T14:05:27.863Z-07:00
 */
 
 #define SWAP(t,a,b) t temp = a; a = b; b = temp
@@ -68,3 +68,19 @@ import java.math.*;
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
+
+public class TwoKnights {
+    PSVMEX {
+        READER_BLOCK {
+            int n = RI;
+            SB;
+            APP1(solve(n));
+            WRITER_BLOCK {
+                WRITE(SBTOS);
+            }
+        }
+    }
+    static int solve(int n) {
+        
+    }
+}

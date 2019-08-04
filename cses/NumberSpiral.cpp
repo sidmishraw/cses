@@ -2,7 +2,7 @@
 * @author Sidharth Mishra
 * @description C++->Java macro Template version 1.0.3
 * @created 2019-07-21T16:14:12.109Z-07:00
-* @last-modified 2019-07-28T14:03:00.244Z-07:00
+* @last-modified 2019-07-28T14:00:02.118Z-07:00
 */
 
 #define SWAP(t,a,b) t temp = a; a = b; b = temp
@@ -68,3 +68,40 @@ import java.math.*;
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
+
+// Number spiral problem
+public class NumberSpiral {
+    
+    PSVMEX {
+        READER_BLOCK {
+            int t = RI;
+            SB;
+            FOR(i,0,t,1) {
+                long y = RL;
+                long x = RL;
+                APP1(findNbr(y,x));
+                APP1("\n");
+            }
+            WRITER_BLOCK {
+                WRITE(SBTOS);
+            }
+        }
+    }
+    
+    static long findNbr(long r, long c) {
+        if (r == 1 && c == 1) return 1;
+        long round = MAX(r,c);
+        boolean e = round % 2 == 0;
+        long v = 0;
+        if (r > c) {
+            // left of diagonal
+            long d = e ? round * round - round + 1: (round - 1)*(round -1) + round;
+            v = d + (e ? round - c : c - round);
+        } else {
+            // right of diagonal
+            long d = !e ? round * round - round + 1: (round - 1)*(round -1) + round;
+            v = d + (e ? r - round : round - r);
+        }
+        return v;
+    }
+}

@@ -1,15 +1,23 @@
 /**
 * @author Sidharth Mishra
-* @description C++->Java macro Template version 1.0.3
+* @description 
 * @created 2019-07-21T16:14:12.109Z-07:00
-* @last-modified 2019-07-28T14:03:00.244Z-07:00
+* @last-modified 2019-07-21T23:13:35.713Z-07:00
 */
 
-#define SWAP(t,a,b) t temp = a; a = b; b = temp
+#define SWAP(a,b) temp = a; a = b; b = temp
 //
 //
-#define MAX(a,b) a > b ? a : b
-#define MIN(a,b) a < b ? a : b
+#define MAXI(a,b) int maxI(int a, int b) { return a > b ? a : b; }
+#define MAXL(a,b) long maxL(long a, long b) { return a > b ? a : b; }
+#define MINI(a,b) int minI(int a, int b) { return a < b ? a : b; }
+#define MINL(a,b) long minL(long a, long b) { return a < b ? a : b; }
+//
+//
+#define MAXF(a,b) float maxF(float a, float b) { return a > b ? a : b; }
+#define MAXD(a,b) double maxD(double a, double b) { return a > b ? a : b; }
+#define MINF(a,b) float minF(float a, float b) { return a < b ? a : b; }
+#define MIND(a,b) double minD(double a, double b) { return a < b ? a : b; }
 //
 //
 #define DEBUG(x) System.out.printf("[DEBUG] -- %s \n", x)
@@ -30,9 +38,6 @@
 #define FOR(i,a,b,step) for(int i = a; i < b; i += step)
 #define RFOR(i,a,b,step) for(int i = b; i >= a; i -= step)
 //
-// use the writer-block for fast output -- faster than sysout
-// use stringbuilder to hold the output until then
-//
 #define SOUT(x) System.out.println(x)
 #define SOUTF(x,y) System.out.printf(x,y)
 #define FMT(x,y) String.format(x,y)
@@ -49,22 +54,26 @@
 import java.util.*;
 import java.io.*;
 import java.math.*;
-///
-///
-#define ALI ArrayList<Integer>
-#define ALF ArrayList<Float>
-#define ALD ArrayList<Double>
-#define ALC ArrayList<Character>
-#define ALS ArrayList<String>
-#define ALLN ArrayList<Long> 
-///
-#define MAPSI HashMap<String,Integer>
-#define MAPIS HashMap<Integer,String>
-#define MAPE Map.Entry
-#define SETS HashSet<String>
-#define SETI HashSet<Integer>
-#define DQI Deque<Integer>
-#define DQS Deque<String>
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
+
+class Solution {
+    PSVM {}
+    public int[] twoSum(int[] nums, int target) {
+        int n = nums.length;
+        HashMap<Integer,Integer> map = new HashMap<>();
+        HashMap<Integer,Integer> rl = new HashMap<>();
+        FOR(i,0,n,1) {
+            map.put(target-nums[i],nums[i]); //reverse lookup
+            rl.put(nums[i],i);
+        }
+        FOR(i,0,n,1) {
+            if (null != map.get(nums[i])) {
+                int k = rl.get(map.get(nums[i]));
+                return new int[]{i,k};
+            }
+        }
+        return new int[0];
+    }
+}
